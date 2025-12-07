@@ -286,15 +286,20 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           trigger_type: string;
         };
 
+        // Map trigger types to node types
+        const triggerNodeTypes: Record<string, string> = {
+          webhook: 'Webhook',
+          schedule: 'Schedule Trigger',
+          email: 'Email Trigger',
+          manual: 'Manual Trigger',
+        };
+
         const workflow = {
           name: workflow_name,
           description: workflow_description || '',
           nodes: [
             {
-              type: trigger_type === 'webhook' ? 'Webhook' : 
-                    trigger_type === 'schedule' ? 'Schedule Trigger' : 
-                    trigger_type === 'email' ? 'Email Trigger' : 
-                    'Manual Trigger',
+              type: triggerNodeTypes[trigger_type] || 'Manual Trigger',
               position: [250, 300],
             },
           ],
@@ -326,22 +331,36 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           integration_needed?: string;
         };
 
-        // Simple keyword matching for suggestions
+        // Keyword matching with word boundaries for better accuracy
         const suggestions: string[] = [];
         const taskLower = task_description.toLowerCase();
+        const taskWords = taskLower.split(/\s+/);
 
+        // Match categories by checking if category word appears in task
         Object.entries(NODE_SUGGESTIONS).forEach(([category, nodes]) => {
-          if (taskLower.includes(category)) {
+          const categoryWords = category.split('_');
+          const hasMatch = categoryWords.some(catWord => 
+            taskWords.some(taskWord => 
+              taskWord.includes(catWord) || catWord.includes(taskWord)
+            )
+          );
+          if (hasMatch) {
             suggestions.push(...nodes);
           }
         });
 
-        // Check integration keywords
+        // Check integration keywords - match node names more precisely
         if (integration_needed) {
           const integrationLower = integration_needed.toLowerCase();
+          const integrationWords = integrationLower.split(/[,\s]+/);
+          
           Object.values(NODE_SUGGESTIONS).forEach((nodes) => {
             nodes.forEach((node) => {
-              if (integrationLower.includes(node.toLowerCase()) && !suggestions.includes(node)) {
+              const nodeLower = node.toLowerCase();
+              const hasMatch = integrationWords.some(word => 
+                word.length > 2 && (nodeLower.includes(word) || word.includes(nodeLower))
+              );
+              if (hasMatch && !suggestions.includes(node)) {
                 suggestions.push(node);
               }
             });
@@ -562,6 +581,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
+  // Log to stderr since stdout is used for MCP protocol communication
   console.error('n8n MCP Server running on stdio');
 }
 
