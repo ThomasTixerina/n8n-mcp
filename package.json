@@ -1,0 +1,47 @@
+{
+  "name": "n8n-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for n8n automation with Antigravity IDE integration - Create, manage and deploy n8n workflows with AI assistance",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "n8n-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "n8n",
+    "automation",
+    "antigravity",
+    "workflow",
+    "model-context-protocol",
+    "ai",
+    "ide-integration",
+    "github-integration",
+    "workflow-automation"
+  ],
+  "author": "ThomasTixerina",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasTixerina/n8n-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThomasTixerina/n8n-mcp/issues"
+  },
+  "homepage": "https://github.com/ThomasTixerina/n8n-mcp#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  }
+}
