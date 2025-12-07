@@ -219,9 +219,20 @@ npm run watch
 node dist/index.js
 ```
 
+## 📚 Documentación
+
+- **[QUICKSTART.md](./QUICKSTART.md)** - Guía de inicio rápido (comienza aquí!)
+- **[EXAMPLES.md](./EXAMPLES.md)** - Ejemplos detallados de uso
+- **[FAQ.md](./FAQ.md)** - Preguntas frecuentes y solución de problemas
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Guía para contribuir al proyecto
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Arquitectura técnica del servidor
+- **[CHANGELOG.md](./CHANGELOG.md)** - Historial de cambios
+
 ## 🤝 Contribuir
 
-Las contribuciones son bienvenidas! Por favor:
+Las contribuciones son bienvenidas! Lee [CONTRIBUTING.md](./CONTRIBUTING.md) para más detalles.
+
+Pasos rápidos:
 
 1. Fork el repositorio
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -231,13 +242,16 @@ Las contribuciones son bienvenidas! Por favor:
 
 ## 📝 Licencia
 
-MIT License - ver el archivo LICENSE para detalles
+MIT License - ver el archivo [LICENSE](./LICENSE) para detalles
 
 ## 🆘 Soporte
 
 Si necesitas ayuda:
 
-1. Usa la herramienta `guide_automation_setup` para guía interactiva
+1. Revisa la [FAQ](./FAQ.md) para problemas comunes
+2. Lee el [QUICKSTART](./QUICKSTART.md) para comenzar
+3. Consulta los [EXAMPLES](./EXAMPLES.md) para casos de uso
+4. Usa la herramienta `guide_automation_setup` para guía interactiva
 2. Revisa la documentación de [n8n](https://docs.n8n.io/)
 3. Abre un issue en este repositorio
 
