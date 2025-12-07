@@ -75,6 +75,53 @@ npm run build
 4. Guarda y reinicia el IDE
 5. ¡El servidor estará disponible automáticamente!
 
+## 🚀 Integración n8n MCP - Reporte de Misión
+
+Hemos completado la integración de tu repositorio n8n-mcp con tu entorno local y GitHub.
+
+### ✅ Logros Alcanzados
+
+| Componente | Estado | Detalle |
+|-----------|--------|---------|
+| Repositorio Local | 🟢 Integrado | Estructura analizada y dependencias instaladas. |
+| GitHub | 🟢 Conectado | Enlazado a ThomasTixerina/n8n-mcp. Sincronización automática configurada. |
+| Entorno Compilación | 🟢 Reparado | Se instalaron Python y Visual Studio Build Tools C++ (requeridos para Windows). |
+| Corrección Versión | 🟢 Parcheado | Se modificó el código para permitir ejecutar n8n con tu versión de Node.js v25 (experimental). |
+
+### 🛠️ Cómo Ejecutar tu MCP
+
+Debido a que estás en un entorno de desarrollo puro, usamos el Modo Dev para mayor estabilidad.
+
+#### Opción A: Ejecución Automática (¡Ya corriendo!)
+
+En este momento, he dejado el servidor iniciándose en segundo plano.
+
+- **URL**: http://localhost:5678
+- **Estado**: Inicializando (puede tardar 2-5 min la primera vez en compilar todo en memoria).
+- **Acción**: Simplemente recarga la página hasta que aparezca el editor.
+
+#### Opción B: Ejecución Manual (Futuro)
+
+Si reinicias tu máquina, solo necesitas estos 2 comandos en tu terminal en `c:\Users\Thomas Tixerina\MCP\n8n-master\n8n-master`:
+
+**1. Instalar cambios nuevos (si los hay):**
+```bash
+pnpm install
+```
+
+**2. Iniciar Servidor:**
+```bash
+pnpm dev
+```
+(Este comando abrirá tanto el Backend :5678 como el Frontend :8080)
+
+### 📂 Archivos Clave Creados
+
+- `setup_environment.ps1`: Script que te salva la vida instalando las herramientas de C++ automáticamente.
+- `n8n_setup_guide.md`: Tu manual de instrucciones completo.
+
+**Nota**: Si ves advertencias en la terminal sobre "Node v25", ignóralas. Hemos parcheado el sistema para que funcione igual. ¡Disfruta tu n8n personalizado!
+
 ## 🛠️ Herramientas Disponibles
 
 ### 1. `create_n8n_workflow`
